@@ -45,7 +45,9 @@ contract SimpleStorage {
     function retrievePure () public pure returns(uint256) {
         return 7;
     }
-
+    // memory 키워드와 calldata 키워드는 둘다 임시변수이지만 간단한 차이점은 memory mutable 하지만 calldata는 immutable 하다는 것... 
+    // storage 는 상태변수가 저장되는 영역인데 일반적인 객체지향 언어의 클래스 필드처럼 선언된 (ex. 위의 myFavoriteNumber변수) 변수가 상태 변수
+    // !! primitive 타입의 변수에게는 이런 키워드가 필요없다 .. 오로지 reference 타입에만 필요...
     function addPerson (string memory _name, uint256 _favoriteNumber) public {
         listOfPeople.push( Person({ favoriteNumber: _favoriteNumber, name: _name }) );
     }
