@@ -27,6 +27,9 @@ contract SimpleStorage {
 
     // 지금은 dynamic array 이고 대괄호 안에 size를 지정하면 static array
     Person[] public listOfPeople;
+    
+    // 일반적인 key-value pair 같지만... 훨씬 원시적이고 단편적인 lookup 이라고 한다.. 그래서 clear, length, has 뭐 이런거 다 없다
+    mapping (string => uint256) public nameToFavoriteNumber;
 
     function store (uint256 _favoriteNumber) public {
         myFavoriteNumber = _favoriteNumber;
@@ -50,5 +53,6 @@ contract SimpleStorage {
     // !! primitive 타입의 변수에게는 이런 키워드가 필요없다 .. 오로지 reference 타입에만 필요...
     function addPerson (string memory _name, uint256 _favoriteNumber) public {
         listOfPeople.push( Person({ favoriteNumber: _favoriteNumber, name: _name }) );
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 }
