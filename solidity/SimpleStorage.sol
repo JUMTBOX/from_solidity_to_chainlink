@@ -31,7 +31,7 @@ contract SimpleStorage {
     // 일반적인 key-value pair 같지만... 훨씬 원시적이고 단편적인 lookup 이라고 한다.. 그래서 clear, length, has 뭐 이런거 다 없다
     mapping(string => uint256) public nameToFavoriteNumber;
 
-    function store(uint256 _favoriteNumber) public {
+    function store(uint256 _favoriteNumber) public virtual {
         myFavoriteNumber = _favoriteNumber;
     }
 
