@@ -23,10 +23,21 @@ contract StorageFactory {
     ) public {
         // Address
         // ABI ( Application Binary Interface )
+
+        // 위에서 언급했듯 이미 배포된 Contract를 의미할 때는 new 키워드 없이 해당 계약의 주소를 파라미터로 전달 ...
         Sim mySimpleStorage = Sim(
             listOfSimpleStorageAddresses[_simpleStorageIndex]
         );
 
+        // 그렇게 하여 address 타입이었던 listOfSimpleStorageAddresses 배열의 원소를 SimpleStorage Contract 타입으로 cast 후 함수 호출이 가능해짐
         mySimpleStorage.store(_newSimpleStorageNumber);
+    }
+
+    function sfGet(uint256 _simpleStorageIndex) public view returns (uint256) {
+        Sim mySimpleStorage = Sim(
+            listOfSimpleStorageAddresses[_simpleStorageIndex]
+        );
+
+        return mySimpleStorage.retrieve();
     }
 }
